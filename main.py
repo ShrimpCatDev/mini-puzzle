@@ -22,7 +22,9 @@ map=newMap(mapWidth,mapHeight)
 def draw(grid):
     os.system("clear")
 
-    map=newMap(9,8)
+    map=newMap(mapHeight,mapWidth)
+
+    map[mapHeight][0]=1
 
     while player["y"]<mapHeight-1:
         player["y"]+=1
