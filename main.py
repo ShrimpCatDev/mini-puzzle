@@ -8,20 +8,26 @@ player={
 
 tiles={
     0:"🟦",
-    1:"🟩"
+    1:"🟩",
+    2:"🔴"
 }
 
 def newMap(w,h):
     return [[0 for x in range(w)] for y in range(h)]
 
-map=newMap(9,8)
+mapWidth=9
+mapHeight=8
+map=newMap(mapWidth,mapHeight)
 
 def draw(grid):
     os.system("clear")
 
     map=newMap(9,8)
 
-    map[player["y"]][player["x"]]=1
+    while player["y"]<mapHeight-1:
+        player["y"]+=1
+
+    map[player["y"]][player["x"]]=2
 
     for y in range(len(grid)):
         s=""
@@ -35,9 +41,13 @@ while True:
     k=readchar.readkey()
     key=k.lower()
 
-    if key=="w":
-        print("up")
+    if key=="a" and player["x"]>0:
+        player["x"]-=1
         draw(map)
+    elif key=="d" and player["x"]<mapWidth-1:
+        player["x"]+=1
+        draw(map)
+        
 
 
     
